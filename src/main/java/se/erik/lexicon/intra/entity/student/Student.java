@@ -2,11 +2,23 @@ package se.erik.lexicon.intra.entity.student;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@Entity
 public class Student {
 	
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String studentId;
+	@Column(unique = true)
 	private String studentEmail;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;

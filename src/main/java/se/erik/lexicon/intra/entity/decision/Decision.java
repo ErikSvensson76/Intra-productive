@@ -3,17 +3,38 @@ package se.erik.lexicon.intra.entity.decision;
 import java.time.LocalDate;
 import java.time.Period;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
 import se.erik.lexicon.intra.entity.student.Student;
 import se.erik.lexicon.intra.enums.DecisionType;
 
+@Entity
 public class Decision {
 	
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String decisionId;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate decisionDate;
 	private int durationInWeeks;
 	private DecisionType decisionType;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "STUDENT_ID")
 	private Student student;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "OFFICER_ID")
 	private CaseOfficer caseOfficer;
 	
 	public Decision(LocalDate decisionDate, int durationInWeeks, DecisionType decisionType, Student student, CaseOfficer caseOfficer) {
