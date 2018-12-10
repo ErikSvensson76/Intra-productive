@@ -1,5 +1,19 @@
 package se.erik.lexicon.intra.service_tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -10,22 +24,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import se.erik.lexicon.intra.data_access.CaseOfficerRepository;
 import se.erik.lexicon.intra.data_access.DecisionRepository;
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
+import se.erik.lexicon.intra.entity.decision.Decision;
+import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.enums.DecisionType;
 import se.erik.lexicon.intra.service.CaseOfficerService;
 import se.erik.lexicon.intra.service.CaseOfficerServiceImpl;
 import se.erik.lexicon.intra.utils.StringUtil;
-
-import org.mockito.*;
-import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
-import org.junit.*;
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 public class CaseOfficerServiceTest {
@@ -82,10 +86,81 @@ public class CaseOfficerServiceTest {
 	}
 	
 	@Test
-	public void test_test_findByCity_with_null_param_return_empty_arraylist() throws InterruptedException, ExecutionException {
+	public void test_findByCity_with_null_param_return_empty_arraylist() throws InterruptedException, ExecutionException {
 		assertTrue(officerService.findByCity(null).get().isEmpty());
 	}
 	
+	@Test
+	public void test_findByPhoneNumber_with_valid_param_CompletableFuture_contains_expected_list() throws InterruptedException, ExecutionException {
+		 String param = "0470-1111111";
+		 List<CaseOfficer> expected = Arrays.asList(testOfficer);
+		 when(officerRepo.findCaseOfficerByPhoneNumber(param)).thenReturn(Arrays.asList(testOfficer));
+		 assertEquals(expected, officerService.findByPhoneNumber(param).get());		 
+	}
 	
+	@Test
+	public void test_findByPhoneNUmber_with_null_param_return_empty_arraylist() throws InterruptedException, ExecutionException {
+		assertTrue(officerService.findByPhoneNumber(null).get().isEmpty());
+	}
+	
+	@Test
+	public void test_findByFullName_valid_param_returns_list_all_contains_param() throws InterruptedException, ExecutionException {
+		String param = "Test";
+		String paramAfterStringUtil = "%Test%";
+		when(stringUtil.surroundWithSqlWildCards(param)).thenReturn(paramAfterStringUtil);
+		when(officerRepo.searchAndFindByName(paramAfterStringUtil)).thenReturn(Arrays.asList(testOfficer, testOfficer2));
+		List<CaseOfficer> actual = officerService.findByFullNameContains(param).get();
+		
+		assertTrue(actual.stream().allMatch(officer -> officer.getFullName().contains(param)));		
+	}
+	
+	@Test
+	public void test_findByFullName_with_null_param_return_empty_arrayList() throws InterruptedException, ExecutionException {
+		assertTrue(officerService.findByFullNameContains(null).get().isEmpty());
+	}
+	
+	@Test
+	public void test_findById_with_valid_param_CompletableFuture_contains_Optional_of_testOfficer() throws InterruptedException, ExecutionException {
+		String param = anyString();
+		Optional<CaseOfficer> expected = Optional.of(testOfficer);
+		when(officerRepo.findById(param)).thenReturn(Optional.of(testOfficer));
+		
+		assertEquals(expected, officerService.findById(param).get());
+	}
+	
+	@Test
+	public void test_findById_with_null_param_CompletableFuture_contains_empty_Optional() throws InterruptedException, ExecutionException {
+		assertFalse(officerService.findById(null).get().isPresent());
+	}
+	
+	@Test
+	public void test_findAll_CompletableFuture_contains_list_of_2_elements() throws InterruptedException, ExecutionException {
+		int expectedSize = 2;
+		when(officerRepo.findAll()).thenReturn(Arrays.asList(testOfficer,testOfficer2));
+		assertEquals(expectedSize, officerService.findAll().get().size());
+	}
+	
+	@Test
+	public void test_fetchAllMadeDecisions_valid_param_CompletableFuture_contains_list_of_testDecision() throws InterruptedException, ExecutionException {
+		Decision testDecision = new Decision(
+				LocalDate.parse("2018-12-01"), 
+				2, 
+				DecisionType.FUB, 
+				new Student("test@test.com",LocalDate.parse("1999-09-09"),"Erik","Svensson"), 
+				testOfficer
+				);
+		
+		List<Decision> expected = Arrays.asList(testDecision);		
+		String officerId = anyString();		
+		
+		when(decisionRepo.findDecisionByOfficerId(officerId)).thenReturn(Arrays.asList(testDecision));
+		
+		assertEquals(expected, officerService.fetchAllMadeDecisions(officerId).get());
+	}
+	
+	@Test
+	public void test_fetchAllMadeDecisions_with_null_param_CompletableFuture_contains_empty_arrayList() throws InterruptedException, ExecutionException {
+		assertTrue(officerService.fetchAllMadeDecisions(null).get().isEmpty());
+	}
 
 }

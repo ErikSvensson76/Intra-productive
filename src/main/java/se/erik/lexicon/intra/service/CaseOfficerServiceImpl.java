@@ -87,13 +87,14 @@ public class CaseOfficerServiceImpl implements CaseOfficerService {
 	}
 
 	@Override
-	public boolean delete(CaseOfficer caseOfficer) throws IllegalArgumentException{
+	public boolean delete(CaseOfficer caseOfficer) throws IllegalArgumentException{		
 		if(caseOfficer == null) throw new IllegalArgumentException("Not possible to delete a null entity");
 		if(caseOfficer.getOfficerId() == null) throw new IllegalArgumentException("CaseOfficer caseOfficer has a null id");
 		
 		officerRepo.delete(caseOfficer);
 		
-		return officerRepo.existsById(caseOfficer.getOfficerId());		
+		//Inverted Boolean expression because in order to return true when delete operation was successful
+		return !officerRepo.existsById(caseOfficer.getOfficerId());		
 	}
 
 	@Override
