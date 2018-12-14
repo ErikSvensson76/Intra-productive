@@ -88,6 +88,12 @@ public class DecisionRepositoryTest {
 		assertEquals(expected, testRepo.findDecisionByOfficerId(officerId));
 	}
 	
+	@Test
+	public void test_findDecisionByDecisionType_FUB_return_list_of_testDecision() {
+		List<Decision> expected = Arrays.asList(testDecision);
+		assertEquals(expected, testRepo.findByDecisionType(DecisionType.FUB));
+	}
+	
 	
 	
 }
