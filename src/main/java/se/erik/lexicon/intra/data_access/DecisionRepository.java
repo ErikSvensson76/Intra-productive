@@ -21,5 +21,7 @@ public interface DecisionRepository extends CrudRepository<Decision, String> {
 	
 	@Query("SELECT d FROM Decision d WHERE d.caseOfficer.officerId = :officerId")
 	List<Decision> findDecisionByOfficerId(@Param("officerId") String officerId);
+	
+	List<Decision> findDecisionByDecisionType(DecisionType type);
 
 }
