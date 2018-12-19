@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>       
+    <link rel="stylesheet" type="text/css" href="/node_modules/normalize.css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}" href="/intra/src/main/resources/static/css/grid.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" href="/intra/src/main/resources/static/css/register.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form_style.css}" href="/intra/src/main/resources/static/css/form_style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+    <title>Registrera Handläggare</title>
+</head>
+<body>
+
+    <section class="section-form">
+        <div class="row">
+            <h2>Ny Handläggare</h2>
+        </div>
+        <div class="row">
+            <form method="POST" action="#" th:action="@{register}" th:object="${form}" class="generic-form">
+            <input type=hidden th:field="*{id}" />
+            
+            	<div class = "row" th:if="${#fields.hasErrors('*')}">
+					<p>Please correct errors below.</p>
+				</div>
+            
+                <div class ="row">
+                    <div class="col span-1-of-3">
+                        <label for="email">Epost</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="email" name="email" id="email" placeholder="Korrekt utformad epostadress" th:field="*{email}" required/>
+                    </div>
+                    <div th:if="${#fields.hasErrors('email')}">
+                    	<ul>
+                    		<li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
+                    	</ul>
+                    </div>
+                </div>
+                <div class ="row">
+                    <div class="col span-1-of-3">
+                        <label for="kontor">Kontor</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="text" name="kontor" id="kontor" placeholder="Stad eller kontor" th:field="*{city}" required/>
+                    </div>
+                    <div th:if="${#fields.hasErrors('city')}">
+                    	<ul>
+                    		<li th:each="err : ${#fields.errors('city')}" th:text="${err}" />
+                    	</ul>
+                    </div>
+                </div>
+                <div class ="row">
+                    <div class="col span-1-of-3">
+                        <label for="telefon">Telefon</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="text" name="telefon" id="telefon" placeholder="Telefon nummer" th:field="*{phone}" required/>
+                    </div>
+                    <div th:if="${#fields.hasErrors('phone')}">
+                    	<ul>
+                    		<li th:each="err : ${#fields.errors('phone')}" th:text="${err}" />
+                    	</ul>
+                    </div>
+                </div>
+                <div class ="row">
+                    <div class="col span-1-of-3">
+                        <label for="name">Förnamn</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="text" name="name" id="name" placeholder="Förnamn" th:field="*{firstName}" required/>
+                    </div>
+                    <div th:if="${#fields.hasErrors('firstName')}">
+                    	<ul>
+                    		<li th:each="err : ${#fields.errors('firstName')}" th:text="${err}" />
+                    	</ul>
+                    </div>
+                </div>
+                <div class ="row">
+                    <div class="col span-1-of-3">
+                        <label for="efternamn">Efternamn</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="text" name="efternamn" id="efternamn" placeholder="Efternamn" th:field="*{lastName}" required/>
+                    </div>
+                    <div th:if="${#fields.hasErrors('lastName')}">
+                    	<ul>
+                    		<li th:each="err : ${#fields.errors('lastName')}" th:text="${err}" />
+                    	</ul>
+                    </div>
+                </div>
+                <div class ="row">
+                    <div class="col span-1-of-3">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="submit" value="Registrera"/>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+    
+</body>
+</html>
