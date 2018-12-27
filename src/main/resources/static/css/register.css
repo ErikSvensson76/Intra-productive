@@ -50,4 +50,18 @@ h2:after{
     margin-top: 30px;
 }
 
+.form-error{
+	color: #ff0000;
+	font-size: 55%;
+	font-weight: 500;
+	
+}
+
+.error-item{
+	width: 100%;
+	padding-top: 0px;
+    padding-left: 7px;
+    list-style-type: none;
+}
+
 

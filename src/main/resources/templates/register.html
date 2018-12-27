@@ -21,9 +21,11 @@
             <form method="POST" action="#" th:action="@{register}" th:object="${form}" class="generic-form">
             <input type=hidden th:field="*{id}" />
             
+            <!-- 
             	<div class = "row" th:if="${#fields.hasErrors('*')}">
 					<p>Please correct errors below.</p>
 				</div>
+			 -->
             
                 <div class ="row">
                     <div class="col span-1-of-3">
@@ -32,10 +34,15 @@
                     <div class="col span-2-of-3">
                         <input type="email" name="email" id="email" placeholder="Korrekt utformad epostadress" th:field="*{email}" required/>
                     </div>
-                    <div th:if="${#fields.hasErrors('email')}">
-                    	<ul>
-                    		<li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
-                    	</ul>
+                    <div class="row form-error" th:if="${#fields.hasErrors('email')}">
+	                    <div class="col span-1-of-3">
+	                        <label>&nbsp;</label>
+	                    </div>
+                    	<div class="col span-2-of-3">
+                        	<ul>
+                    			<li class="error-item" th:each="err : ${#fields.errors('email')}" th:text="${err}" />
+                    		</ul>
+                    	</div>
                     </div>
                 </div>
                 <div class ="row">
@@ -45,10 +52,15 @@
                     <div class="col span-2-of-3">
                         <input type="text" name="kontor" id="kontor" placeholder="Stad eller kontor" th:field="*{city}" required/>
                     </div>
-                    <div th:if="${#fields.hasErrors('city')}">
-                    	<ul>
-                    		<li th:each="err : ${#fields.errors('city')}" th:text="${err}" />
-                    	</ul>
+                    <div class="row form-error" th:if="${#fields.hasErrors('city')}">
+	                    <div class="col span-1-of-3">
+	                        <label>&nbsp;</label>
+	                    </div>
+                    	<div class="col span-2-of-3">
+                        	<ul>
+                    			<li class="error-item" th:each="err : ${#fields.errors('city')}" th:text="${err}" />
+                    		</ul>
+                    	</div>
                     </div>
                 </div>
                 <div class ="row">
@@ -58,10 +70,15 @@
                     <div class="col span-2-of-3">
                         <input type="text" name="telefon" id="telefon" placeholder="Telefon nummer" th:field="*{phone}" required/>
                     </div>
-                    <div th:if="${#fields.hasErrors('phone')}">
-                    	<ul>
-                    		<li th:each="err : ${#fields.errors('phone')}" th:text="${err}" />
-                    	</ul>
+                    <div class="row form-error" th:if="${#fields.hasErrors('phone')}">
+	                    <div class="col span-1-of-3">
+	                        <label>&nbsp;</label>
+	                    </div>
+                    	<div class="col span-2-of-3">
+                        	<ul>
+                    			<li class="error-item" th:each="err : ${#fields.errors('phone')}" th:text="${err}" />
+                    		</ul>
+                    	</div>
                     </div>
                 </div>
                 <div class ="row">
@@ -71,10 +88,15 @@
                     <div class="col span-2-of-3">
                         <input type="text" name="name" id="name" placeholder="Förnamn" th:field="*{firstName}" required/>
                     </div>
-                    <div th:if="${#fields.hasErrors('firstName')}">
-                    	<ul>
-                    		<li th:each="err : ${#fields.errors('firstName')}" th:text="${err}" />
-                    	</ul>
+                    <div class="row form-error" th:if="${#fields.hasErrors('firstName')}">
+	                    <div class="col span-1-of-3">
+	                        <label>&nbsp;</label>
+	                    </div>
+	                    <div class="col span-2-of-3">
+	                    	<ul>
+	                    		<li class="error-item" th:each="err : ${#fields.errors('firstName')}" th:text="${err}" />
+	                    	</ul>
+                    	</div>
                     </div>
                 </div>
                 <div class ="row">
@@ -84,10 +106,15 @@
                     <div class="col span-2-of-3">
                         <input type="text" name="efternamn" id="efternamn" placeholder="Efternamn" th:field="*{lastName}" required/>
                     </div>
-                    <div th:if="${#fields.hasErrors('lastName')}">
-                    	<ul>
-                    		<li th:each="err : ${#fields.errors('lastName')}" th:text="${err}" />
-                    	</ul>
+                    <div class="row form-error" th:if="${#fields.hasErrors('lastName')}">
+                    	<div class="col span-1-of-3">
+                        	<label>&nbsp;</label>
+                    	</div>
+                    	<div class="col span-2-of-3">
+                        	<ul>
+                    			<li class="error-item" th:each="err : ${#fields.errors('lastName')}" th:text="${err}" />
+                    		</ul>
+                    	</div>                    	
                     </div>
                 </div>
                 <div class ="row">

@@ -76,6 +76,10 @@ public class CaseOfficer {
 		return officerId;
 	}
 	
+	public void setOfficerId(String officerId) {
+		this.officerId = officerId;
+	}
+	
 	public String getFullName() {
 		return new StringBuilder(getFirstName() + " " + getLastName()).toString();
 	}
