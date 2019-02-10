@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
+import se.erik.lexicon.intra.entity.case_officer.CaseOfficerView;
 import se.erik.lexicon.intra.entity.decision.Decision;
 
 public interface CaseOfficerService {
@@ -18,5 +19,6 @@ public interface CaseOfficerService {
 	CompletableFuture<List<Decision>> fetchAllMadeDecisions(String officerId);
 	CaseOfficer save(CaseOfficer caseOfficer);
 	CaseOfficer update(CaseOfficer updated);
-	boolean delete(CaseOfficer caseOfficer);	
+	boolean delete(CaseOfficer caseOfficer);
+	CaseOfficerView convertToView(CaseOfficer caseOfficer);
 }

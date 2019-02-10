@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" href="/intra/src/main/resources/static/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}" href="/intra/src/main/resources/static/css/grid.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/default-style.css}" href="/intra/src/main/resources/static/css/default-style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet"/>
+
+   
+    <title>Visa Handläggare</title>
+</head>
+<body>
+    <div class="row">
+        <h2 th:text="${caseOfficer.fullName}">Object name</h2>
+    </div>
+    <div class="object-info">
+    	<div class = "row">
+            <p class="col span-1-of-3 field">Email</p>
+            <p class="col span-2-of-3 value" th:text="${caseOfficer.email}">test@test.com</p>
+        </div>
+        <div class = "row">
+            <p class="col span-1-of-3 field">Kontor</p>
+            <p class="col span-2-of-3 value" th:text="${caseOfficer.city}">Växjö</p>
+        </div>
+        <div class = "row">
+            <p class="col span-1-of-3 field">Telefon</p>
+            <p class="col span-2-of-3 value" th:text="${caseOfficer.phone}">070-1234567</p>
+        </div>
+        <div class = "row">
+            <p class="col span-1-of-3 field">Förnamn</p>
+            <p class="col span-2-of-3 value" th:text="${caseOfficer.firstName}">Test</p>
+        </div>
+        <div class = "row">
+            <p class="col span-1-of-3 field">Efternamn</p>
+            <p class="col span-2-of-3 value" th:text="${caseOfficer.lastName}">Testsson</p>
+        </div>
+    </div>
+    
+</body>
+</html>
