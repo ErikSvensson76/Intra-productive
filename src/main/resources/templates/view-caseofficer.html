@@ -37,13 +37,33 @@
             <p class="col span-1-of-3 field">Efternamn</p>
             <p class="col span-2-of-3 value" th:text="${caseOfficer.lastName}">Testsson</p>
         </div>
-                        
-        <div class="row">
+        
+        <!-- 
+        <div class = "list-section"  th:if="${!caseOfficer.decisions.empty}">
+         -->
+        <div class = "list-section">
+	         <div class="row">
         		<p class="col span-1-of-6">Datum</p>
         		<p class="col span-1-of-6">Beslutstyp</p>
         		<p class="col span-1-of-6">Dagar kvar</p>
         		<p class="col span-2-of-6">Deltagare</p>        		       
-        </div>        
+	        </div>
+	        <ul>
+	        	<li class="row">
+	        		<p class="col span-1-of-6">2019-02-21</p>
+	        		<p class="col span-1-of-6">FUB</p>
+	        		<p class="col span-1-of-6">10</p>
+	        		<p class="col span-2-of-6">Nils Andersson</p>
+	        		<a href="#">Details</a>
+	        	</li>	        	
+	        </ul>  
+        </div>
+        
+        <!--  
+        <div class="row" th:if="${caseOfficer.decisions.empty}">
+        	<p>Inga beslut tagna</p>
+        </div>             
+          -->   
     </div>
     
 </body>

@@ -123,6 +123,8 @@ public class CaseOfficerServiceImpl implements CaseOfficerService {
 			throw new IllegalArgumentException("CaseOfficer was" + caseOfficer);
 		}
 		
+		List<Decision> decisions = decisionRepo.findDecisionByOfficerId(caseOfficer.getOfficerId());
+		
 		CaseOfficerView caseOfficerView = new CaseOfficerView(
 				caseOfficer.getOfficerId(), 
 				caseOfficer.getOfficerEmail(), 
@@ -131,6 +133,8 @@ public class CaseOfficerServiceImpl implements CaseOfficerService {
 				caseOfficer.getFirstName(), 
 				caseOfficer.getLastName()
 				);
+		
+		caseOfficerView.setDecisions(decisions);
 		
 		return caseOfficerView;		
 	}
