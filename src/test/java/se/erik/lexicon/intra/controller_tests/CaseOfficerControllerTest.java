@@ -1,26 +1,20 @@
 package se.erik.lexicon.intra.controller_tests;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
 import se.erik.lexicon.intra.controller.CaseOfficerController;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficerForm;
 import se.erik.lexicon.intra.service.CaseOfficerService;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-
-import static org.mockito.Mockito.*;
-import org.mockito.internal.util.reflection.FieldSetter;
 
 
 public class CaseOfficerControllerTest {

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import se.erik.lexicon.intra.data_access.CaseOfficerRepository;
 import se.erik.lexicon.intra.data_access.DecisionRepository;
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
+import se.erik.lexicon.intra.entity.case_officer.CaseOfficerView;
 import se.erik.lexicon.intra.entity.decision.Decision;
 import se.erik.lexicon.intra.utils.StringUtil;
 
@@ -114,6 +115,24 @@ public class CaseOfficerServiceImpl implements CaseOfficerService {
 		}else {
 			return save(updated);
 		}		
+	}
+
+	@Override
+	public CaseOfficerView convertToView(CaseOfficer caseOfficer) {
+		if(caseOfficer == null) {
+			throw new IllegalArgumentException("CaseOfficer was" + caseOfficer);
+		}
+		
+		CaseOfficerView caseOfficerView = new CaseOfficerView(
+				caseOfficer.getOfficerId(), 
+				caseOfficer.getOfficerEmail(), 
+				caseOfficer.getOfficerCity(), 
+				caseOfficer.getOfficerPhone(), 
+				caseOfficer.getFirstName(), 
+				caseOfficer.getLastName()
+				);
+		
+		return caseOfficerView;		
 	}
 
 }
