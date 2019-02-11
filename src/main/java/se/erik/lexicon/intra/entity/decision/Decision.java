@@ -100,7 +100,7 @@ public class Decision {
 	}
 	
 	/**
-	 * Intended to be used only for testing
+	 * Intended to be used directly only for testing
 	 * @param LocalDate test LocalDate representing "today"
 	 * @return int representing days until decision runs out
 	 */

@@ -37,45 +37,25 @@ public class CaseOfficerView {
 		this.lastName = lastName;
 	}	
 
-	public String getId() {
-		return id;
-	}
+	public String getId() {return id;}
 
-	public String getEmail() {
-		return email;
-	}
+	public String getEmail() {return email;}
 
-	public String getCity() {
-		return city;
-	}
+	public String getCity() {return city;}
 
-	public String getPhone() {
-		return phone;
-	}
+	public String getPhone() {return phone;}
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getFirstName() {return firstName;}
 
-	public String getLastName() {
-		return lastName;
-	}
+	public String getLastName() {return lastName;}
 
-	public List<Decision> getDecisions() {
-		return decisions;
-	}
+	public List<Decision> getDecisions() {return decisions;}
 	
-	public void setDecisions(List<Decision> decisions) {
-		this.decisions = decisions;
-	}	
+	public void setDecisions(List<Decision> decisions) {this.decisions = decisions;}	
 
-	public List<Student> getStudents() {
-		return students;
-	}
+	public List<Student> getStudents() {return students;}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
+	public void setStudents(List<Student> students) {this.students = students;}
 	
 	public String getFullName() {
 		return new StringBuilder().append(firstName).append(" ").append(lastName).toString();
