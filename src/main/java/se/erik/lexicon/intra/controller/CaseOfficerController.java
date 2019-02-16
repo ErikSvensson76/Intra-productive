@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.decision.CaseOfficerForm;
+import se.erik.lexicon.intra.forms_and_views.CaseOfficerForm;
 import se.erik.lexicon.intra.service.CaseOfficerService;
 
 @Controller
