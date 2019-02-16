@@ -21,6 +21,8 @@ public class CaseOfficerView {
 	@Nullable
 	private List<Student> students = new ArrayList<>();	
 	
+	public CaseOfficerView() {}
+	
 	public CaseOfficerView(String id, String email, String city, String phone, String firstName, String lastName,
 			List<Decision> decisions, List<Student> students) {
 		this(id, email, city, phone, firstName, lastName);
