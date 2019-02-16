@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import se.erik.lexicon.intra.data_access.CaseOfficerRepository;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
+import se.erik.lexicon.intra.entity.CaseOfficer;
 
 import static org.junit.Assert.*;
 import org.junit.*;

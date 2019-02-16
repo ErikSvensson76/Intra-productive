@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import se.erik.lexicon.intra.entity.decision.Decision;
+import se.erik.lexicon.intra.entity.Decision;
 import se.erik.lexicon.intra.enums.DecisionType;
 
 public interface DecisionRepository extends CrudRepository<Decision, String> {

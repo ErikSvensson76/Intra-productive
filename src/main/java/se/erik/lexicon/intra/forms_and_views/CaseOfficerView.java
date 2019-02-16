@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.lang.Nullable;
 
-import se.erik.lexicon.intra.entity.decision.Decision;
-import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.entity.Decision;
+import se.erik.lexicon.intra.entity.Student;
 
 public class CaseOfficerView {
 	

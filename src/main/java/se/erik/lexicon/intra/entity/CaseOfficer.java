@@ -1,4 +1,4 @@
-package se.erik.lexicon.intra.entity.case_officer;
+package se.erik.lexicon.intra.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

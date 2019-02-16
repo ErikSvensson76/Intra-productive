@@ -1,4 +1,4 @@
-package se.erik.lexicon.intra.entity.decision;
+package se.erik.lexicon.intra.entity;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -15,8 +15,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.student.Student;
 import se.erik.lexicon.intra.enums.DecisionType;
 
 @Entity

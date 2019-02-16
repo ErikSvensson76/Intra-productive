@@ -3,7 +3,7 @@ package se.erik.lexicon.intra.enity_tests;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.entity.Student;
 
 import static org.junit.Assert.*;
 

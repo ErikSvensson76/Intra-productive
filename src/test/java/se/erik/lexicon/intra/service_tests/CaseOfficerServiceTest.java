@@ -23,9 +23,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import se.erik.lexicon.intra.data_access.CaseOfficerRepository;
 import se.erik.lexicon.intra.data_access.DecisionRepository;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.decision.Decision;
-import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.entity.CaseOfficer;
+import se.erik.lexicon.intra.entity.Decision;
+import se.erik.lexicon.intra.entity.Student;
 import se.erik.lexicon.intra.enums.DecisionType;
 import se.erik.lexicon.intra.service.CaseOfficerService;
 import se.erik.lexicon.intra.service.CaseOfficerServiceImpl;

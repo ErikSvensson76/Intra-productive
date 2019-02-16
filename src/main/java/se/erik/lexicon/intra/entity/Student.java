@@ -1,4 +1,4 @@
-package se.erik.lexicon.intra.entity.student;
+package se.erik.lexicon.intra.entity;
 
 import java.time.LocalDate;
 

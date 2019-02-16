@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.entity.Student;
 
 public interface StudentRepository extends CrudRepository<Student, String> {
 	

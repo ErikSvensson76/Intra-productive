@@ -3,9 +3,9 @@ package se.erik.lexicon.intra.enity_tests;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.decision.Decision;
-import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.entity.CaseOfficer;
+import se.erik.lexicon.intra.entity.Decision;
+import se.erik.lexicon.intra.entity.Student;
 import se.erik.lexicon.intra.enums.DecisionType;
 
 import static org.junit.Assert.*;

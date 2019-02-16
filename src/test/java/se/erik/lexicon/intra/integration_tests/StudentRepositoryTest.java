@@ -15,7 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import se.erik.lexicon.intra.data_access.StudentRepository;
-import se.erik.lexicon.intra.entity.student.Student;
+import se.erik.lexicon.intra.entity.Student;
 
 import static org.junit.Assert.*;
 

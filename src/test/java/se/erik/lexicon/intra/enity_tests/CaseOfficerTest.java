@@ -3,7 +3,7 @@ package se.erik.lexicon.intra.enity_tests;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
+import se.erik.lexicon.intra.entity.CaseOfficer;
 
 import static org.junit.Assert.*;
 
