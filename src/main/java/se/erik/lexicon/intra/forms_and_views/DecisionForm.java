@@ -1,4 +1,4 @@
-package se.erik.lexicon.intra.entity.decision;
+package se.erik.lexicon.intra.forms_and_views;
 
 import java.time.LocalDate;
 

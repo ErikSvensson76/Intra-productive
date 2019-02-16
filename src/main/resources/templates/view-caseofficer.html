@@ -38,32 +38,34 @@
             <p class="col span-2-of-3 value" th:text="${caseOfficer.lastName}">Testsson</p>
         </div>
         
-        <!-- 
+        
         <div class = "list-section"  th:if="${!caseOfficer.decisions.empty}">
-         -->
-        <div class = "list-section">
+         
 	         <div class="row">
-        		<p class="col span-1-of-6">Datum</p>
-        		<p class="col span-1-of-6">Beslutstyp</p>
-        		<p class="col span-1-of-6">Dagar kvar</p>
-        		<p class="col span-2-of-6">Deltagare</p>        		       
+        		<p class="col span-1-of-5">Datum</p>
+        		<p class="col span-1-of-5">Beslutstyp</p>
+        		<p class="col span-1-of-5">Dagar kvar</p>
+        		<p class="col span-2-of-5">Deltagare</p>        		       
 	        </div>
-	        <ul>
+	        <ul th:each="decision: ${caseOfficer.decisions}">
+	        	
 	        	<li class="row">
-	        		<p class="col span-1-of-6">2019-02-21</p>
-	        		<p class="col span-1-of-6">FUB</p>
-	        		<p class="col span-1-of-6">10</p>
-	        		<p class="col span-2-of-6">Nils Andersson</p>
-	        		<a href="#">Details</a>
+	        		<a href="#" class="link-row">
+	        			<span class="col span-1-of-5" th:text="${decision.decisionDate}">2019-02-21</span>
+	        			<span class="col span-1-of-5" th:text="${decision.decisionType}">FUB</span>
+	        			<span class="col span-1-of-5" th:text="${decision.daysLeft()}">10</span>
+	        			<span class="col span-2-of-5" th:text="${decision.student.fullName}">Nils Andersson</span>
+	        		</a>
 	        	</li>	        	
 	        </ul>  
         </div>
         
-        <!--  
+          
         <div class="row" th:if="${caseOfficer.decisions.empty}">
         	<p>Inga beslut tagna</p>
-        </div>             
-          -->   
+        </div> 
+              
+            
     </div>
     
 </body>

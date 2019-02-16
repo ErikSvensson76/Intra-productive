@@ -1,6 +1,10 @@
 package se.erik.lexicon.intra.controller;
 
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.validation.Valid;
 
@@ -11,12 +15,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficerForm;
+import se.erik.lexicon.intra.entity.decision.CaseOfficerForm;
 import se.erik.lexicon.intra.service.CaseOfficerService;
 
 @Controller
@@ -35,7 +40,7 @@ public class CaseOfficerController {
 	
 	@PostMapping("caseofficer/register")
 	public ModelAndView register(@Valid @ModelAttribute("form") CaseOfficerForm form, BindingResult bindingResult) throws InterruptedException, ExecutionException {
-		
+				
 		if(service.findByEmail(form.getEmail()).get().isPresent()) {
 			FieldError err = new FieldError("form", "email", "Använd en annan email adress. " + form.getEmail() + " är redan registrerad.");
 			bindingResult.addError(err);
@@ -49,11 +54,30 @@ public class CaseOfficerController {
 				
 		CaseOfficer newOfficer = new CaseOfficer(form.getEmail(), form.getCity(), form.getPhone(), form.getFirstName(), form.getLastName());
 		newOfficer = service.save(newOfficer);
-		ModelAndView model = new ModelAndView();
-		model.addObject("caseOfficer", service.convertToView(newOfficer));
-		model.setViewName("view-caseofficer");
-		
+		ModelAndView model = new ModelAndView("redirect:/index/caseofficer/" + newOfficer.getOfficerId() + "/show");
+
 		return model;			
+	}
+	
+	@GetMapping("caseofficer/{caseOfficerId}/show")
+	public String showCaseOfficer(@PathVariable("caseOfficerId")String id, Model model) {
+		
+		CompletableFuture<Optional<CaseOfficer>> future = service.findById(id);
+		Optional<CaseOfficer> content = Optional.empty();
+		try {
+			content = future.get(1000, TimeUnit.MILLISECONDS);
+		} catch (InterruptedException | ExecutionException | TimeoutException e) {
+			System.err.println(e.getMessage());
+			model.addAttribute("exception", e);
+			return "error";
+		}
+		
+		if(content.isPresent()) {
+			model.addAttribute("caseOfficer", service.convertToView(content.get()));
+			return "view-caseofficer";
+		}else {
+			return "error";
+		}		
 	}
 		
 }

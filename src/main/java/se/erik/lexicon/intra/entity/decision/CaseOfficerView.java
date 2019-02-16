@@ -1,11 +1,10 @@
-package se.erik.lexicon.intra.entity.case_officer;
+package se.erik.lexicon.intra.entity.decision;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.lang.Nullable;
 
-import se.erik.lexicon.intra.entity.decision.Decision;
 import se.erik.lexicon.intra.entity.student.Student;
 
 public class CaseOfficerView {

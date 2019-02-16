@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import se.erik.lexicon.intra.data_access.CaseOfficerRepository;
 import se.erik.lexicon.intra.data_access.DecisionRepository;
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficerView;
+import se.erik.lexicon.intra.entity.decision.CaseOfficerView;
 import se.erik.lexicon.intra.entity.decision.Decision;
 import se.erik.lexicon.intra.utils.StringUtil;
 

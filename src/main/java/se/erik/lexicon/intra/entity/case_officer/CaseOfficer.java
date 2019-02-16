@@ -84,16 +84,14 @@ public class CaseOfficer {
 		return new StringBuilder(getFirstName() + " " + getLastName()).toString();
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((officerCity == null) ? 0 : officerCity.hashCode());
 		result = prime * result + ((officerEmail == null) ? 0 : officerEmail.hashCode());
 		result = prime * result + ((officerId == null) ? 0 : officerId.hashCode());
-		result = prime * result + ((officerPhone == null) ? 0 : officerPhone.hashCode());
 		return result;
 	}
 
@@ -106,21 +104,6 @@ public class CaseOfficer {
 		if (getClass() != obj.getClass())
 			return false;
 		CaseOfficer other = (CaseOfficer) obj;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (officerCity == null) {
-			if (other.officerCity != null)
-				return false;
-		} else if (!officerCity.equals(other.officerCity))
-			return false;
 		if (officerEmail == null) {
 			if (other.officerEmail != null)
 				return false;
@@ -131,11 +114,6 @@ public class CaseOfficer {
 				return false;
 		} else if (!officerId.equals(other.officerId))
 			return false;
-		if (officerPhone == null) {
-			if (other.officerPhone != null)
-				return false;
-		} else if (!officerPhone.equals(other.officerPhone))
-			return false;
 		return true;
 	}
 
@@ -143,8 +121,7 @@ public class CaseOfficer {
 	public String toString() {
 		return "CaseOfficer [officerId=" + officerId + ", officerEmail=" + officerEmail + ", officerCity=" + officerCity
 				+ ", officerPhone=" + officerPhone + ", firstName=" + firstName + ", lastName=" + lastName + "]";
-	}
-	
+	}	
 	
 		
 

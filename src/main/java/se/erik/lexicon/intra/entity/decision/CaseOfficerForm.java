@@ -1,4 +1,4 @@
-package se.erik.lexicon.intra.entity.case_officer;
+package se.erik.lexicon.intra.entity.decision;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

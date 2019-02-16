@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import se.erik.lexicon.intra.entity.case_officer.CaseOfficer;
-import se.erik.lexicon.intra.entity.case_officer.CaseOfficerView;
+import se.erik.lexicon.intra.entity.decision.CaseOfficerView;
 import se.erik.lexicon.intra.entity.decision.Decision;
 
 public interface CaseOfficerService {
